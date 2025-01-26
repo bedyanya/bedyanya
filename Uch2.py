@@ -22,7 +22,7 @@ if analizer_select =='ERBA XL-1000':
     analiser_df =pd.read_excel(read_file,sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
     st.image('https://mqst.ru/t/j-vtEsPx-j7mktwwMuBrDhyqb7c=/0x1040/2022/02/pALPXoG3oKYqfKyW3hxS3LpdazZZ09hRnzoKZB7M.jpg', width=250)
 if analizer_select =='ACL TOP 550':
-    analiser_df =pd.read_excel(r'C:\Users\кусь\OneDrive\Рабочий стол\GOVNO\ACL TOP 550.xlsx',sheet_name='Лист1',engine='openpyxl')
+    analiser_df =pd.read_excel('ACLTOP-550.xlsx',sheet_name='Лист1',engine='openpyxl')
     st.image('https://avatars.mds.yandex.net/i?id=11dd2705f9f88d64fd10160131cee70006839ba0-9860796-images-thumbs&n=13',width=250)
 
     #grid_return = AgGrid(analiser_df, editable=True)
