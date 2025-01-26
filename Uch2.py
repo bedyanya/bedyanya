@@ -30,6 +30,39 @@ if analizer_select == 'DxFlex':
 if analizer_select == 'Rotem Delta':
     analiser_df = pd.read_excel('Rotem Delta.xlsx',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
     st.image('https://www.werfen.com/it/sites/default/files/inline-images/rotem-detlta-and-rotem-platelet.png', width =250)
+if analizer_select == 'Erba Elite 580':
+    analiser_df = pd.read_excel('Erba Elite 580.xlsx',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
+    st.image('https://avatars.mds.yandex.net/i?id=786f1f3b4150de13e4f738593543e742_l-12640484-images-thumbs&n=13', width=250)
+if analizer_select == 'Lifotronic H9':
+    analiser_df = pd.read_excel('Lifotronic H9.xlsx',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
+    st.image('https://pfgroup.ru/upload/iblock/79b/5g0xf3yff4452ljhwzfv2u40x386uyg8.png', width=250)
+if analizer_select == 'Maglumi':
+    analiser_df = pd.read_excel('Maglumi.xlsx',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
+    st.image('https://medcatalog.by/storage/images/29/29ac71b8ac0b9ac550d98f9130d72fca.jpg', width=250)
+if analizer_select == 'Lazurit':
+    analiser_df = pd.read_excel('Lazurit.xlsx',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
+    st.image('https://ajax-nsk.ru/immunofermentnyy-avtomaticheskiy-analizator-lazurit.jpg',width=250)
+if analizer_select == 'DxI800':
+    analiser_df = pd.read_excel('DxI800.xlsx',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
+    st.image('https://mqst.ru/t/boj4rJkbHOOYt0MPbIt46OmMj4g=/uploads/2021/09/dxl8002-f.png', width=250)
+if analizer_select == 'Группы крови/OrthoVision':
+    analiser_df =pd.read_excel('Группы крови/OrthoVision.xlsx',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
+    st.image('https://avatars.mds.yandex.net/i?id=b781f7c43b154bc5fdb04063bef11bf4638d5a53-5232475-images-thumbs&n=13', width=250)
+if analizer_select == 'Laura XL':
+    analiser_df = pd.read_excel('Laura XL.xlsx',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
+    st.image('https://mqst.ru/t/v18La7M8XRkaMq5KLjzhNFjGynQ=/0x520/uploads/2021/03/erba-lachema-sro-laura-xl-3.png',width=250)
+if analizer_select == 'ABL 800':
+    analiser_df = pd.read_excel('ABL 800',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
+    st.image('https://mqst.ru/t/YvpaU9Q_nweuqu8S2N4_S5zc05c=/0x1040/uploads/2021/04/abl800flex-2f.png',width=250)
+if analizer_select == 'Mindray BS240':
+    analiser_df = pd.read_excel('Mindray BS240',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
+    st.image('https://tmls.ru/upload/iblock/ad8/ejrkp4yx8efo0obs75m1mqu29235hnbm.jpg', width=250)
+if analizer_select == 'ecl8000':
+    analiser_df = pd.read_excel('ecl8000',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
+    st.image('https://avatars.mds.yandex.net/i?id=95455488b4a7f0c0a6f878d11db1d86e_l-9102470-images-thumbs&n=13', width=250)
+if analizer_select == 'Красители/Общая клиника':
+    analiser_df = pd.read_excel('Красители/Общая клиника',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
+    st.image('https://www.deznet.ru/upload/iblock/ff9/s33b9e9x7goxqhxpeb9ogdpg3ma24qk5.jpg', width=250)
 
     #grid_return = AgGrid(analiser_df, editable=True)
 #st.data_editor(grid_return['data'])
