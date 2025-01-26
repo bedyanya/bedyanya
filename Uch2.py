@@ -7,7 +7,7 @@ from pathlib import Path
 
 
 analizator_option = ['ERBA XL-1000', 'ACL TOP 550', 'Rotem Delta', 'Erba Elite 580', 'Lifotronic H9', 'Maglumi', 
-                     'Lazurit', 'DxI800', 'Группы крови/OrthoVision','Laura XL', 'ABL 800', 'DxFlex',
+                     'Lazurit', 'DxI800', 'Группы крови OrthoVision','Laura XL', 'ABL 800', 'DxFlex',
                      'Mindray BS240', 'ecl8000', 'Красители/Общая клиника' ]
 analizer_select = st.sidebar.selectbox('Анализатор/Раздел', options=analizator_option)
 
@@ -45,8 +45,8 @@ if analizer_select == 'Lazurit':
 if analizer_select == 'DxI800':
     analiser_df = pd.read_excel('DxI800.xlsx',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
     st.image('https://mqst.ru/t/boj4rJkbHOOYt0MPbIt46OmMj4g=/uploads/2021/09/dxl8002-f.png', width=250)
-if analizer_select == 'Группы крови/OrthoVision':
-    analiser_df =pd.read_excel('Группы крови/OrthoVision.xlsx',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
+if analizer_select == 'Группы крови OrthoVision':
+    analiser_df =pd.read_excel('Группы крови OrthoVision.xlsx',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
     st.image('https://avatars.mds.yandex.net/i?id=b781f7c43b154bc5fdb04063bef11bf4638d5a53-5232475-images-thumbs&n=13', width=250)
 if analizer_select == 'Laura XL':
     analiser_df = pd.read_excel('Laura XL.xlsx',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
