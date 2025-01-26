@@ -52,16 +52,16 @@ if analizer_select == 'Laura XL':
     analiser_df = pd.read_excel('Laura XL.xlsx',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
     st.image('https://mqst.ru/t/v18La7M8XRkaMq5KLjzhNFjGynQ=/0x520/uploads/2021/03/erba-lachema-sro-laura-xl-3.png',width=250)
 if analizer_select == 'ABL 800':
-    analiser_df = pd.read_excel('ABL 800',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
+    analiser_df = pd.read_excel('ABL 800.xlsx',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
     st.image('https://mqst.ru/t/YvpaU9Q_nweuqu8S2N4_S5zc05c=/0x1040/uploads/2021/04/abl800flex-2f.png',width=250)
 if analizer_select == 'Mindray BS240':
-    analiser_df = pd.read_excel('Mindray BS240',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
+    analiser_df = pd.read_excel('Mindray BS240.xlsx',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
     st.image('https://tmls.ru/upload/iblock/ad8/ejrkp4yx8efo0obs75m1mqu29235hnbm.jpg', width=250)
 if analizer_select == 'ecl8000':
-    analiser_df = pd.read_excel('ecl8000',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
+    analiser_df = pd.read_excel('ecl8000.xlsx',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
     st.image('https://avatars.mds.yandex.net/i?id=95455488b4a7f0c0a6f878d11db1d86e_l-9102470-images-thumbs&n=13', width=250)
 if analizer_select == 'Красители-Общая клиника':
-    analiser_df = pd.read_excel('Красители/Общая клиника',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
+    analiser_df = pd.read_excel('Красители/Общая клиника.xlsx',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
     st.image('https://www.deznet.ru/upload/iblock/ff9/s33b9e9x7goxqhxpeb9ogdpg3ma24qk5.jpg', width=250)
 
     #grid_return = AgGrid(analiser_df, editable=True)
