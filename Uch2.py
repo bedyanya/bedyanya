@@ -18,17 +18,17 @@ state = st.sidebar.radio('Выбери раздел',options=states,horizontal=F
 
 
 if analizer_select =='ERBA XL-1000':
-    read_file = 'ERBAXL-1000.xlsx'
+    read_file = 'ERBA XL-1000.xlsx'
     analiser_df =pd.read_excel(read_file,sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
     st.image('https://mqst.ru/t/j-vtEsPx-j7mktwwMuBrDhyqb7c=/0x1040/2022/02/pALPXoG3oKYqfKyW3hxS3LpdazZZ09hRnzoKZB7M.jpg', width=250)
 if analizer_select =='ACL TOP 550':
-    analiser_df =pd.read_excel('ACLTOP-550.xlsx',sheet_name='Лист1',engine='openpyxl')
+    analiser_df =pd.read_excel('ACL TOP 550.xlsx',sheet_name='Лист1',engine='openpyxl')
     st.image('https://avatars.mds.yandex.net/i?id=11dd2705f9f88d64fd10160131cee70006839ba0-9860796-images-thumbs&n=13',width=250)
 if analizer_select == 'DxFlex':
-    analiser_df =pd.read_excel('DXFlex.xlsx',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
+    analiser_df =pd.read_excel('DxFlex.xlsx',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
     st.image('https://medtour.help/wp-content/uploads/2020/12/5fafc7cb6bcfbc002180166d_optimized.png', width=250)
 if analizer_select == 'Rotem Delta':
-    analiser_df = pd.read_excel('Rotem.xlsx',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
+    analiser_df = pd.read_excel('Rotem Delta.xlsx',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
     st.image('https://www.werfen.com/it/sites/default/files/inline-images/rotem-detlta-and-rotem-platelet.png', width =250)
 
     #grid_return = AgGrid(analiser_df, editable=True)
