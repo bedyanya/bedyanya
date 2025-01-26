@@ -7,7 +7,7 @@ from pathlib import Path
 
 
 analizator_option = ['ERBA XL-1000', 'ACL TOP 550', 'Rotem Delta', 'Erba Elite 580', 'Lifotronic H9', 'Maglumi', 
-                     'Lazurit', 'DxI800', 'Группы крови/OrthoVision','Laura XL', 'ABL 800', 
+                     'Lazurit', 'DxI800', 'Группы крови/OrthoVision','Laura XL', 'ABL 800', 'DxFlex',
                      'Mindray BS240', 'ecl8000', 'Красители/Общая клиника' ]
 analizer_select = st.sidebar.selectbox('Анализатор/Раздел', options=analizator_option)
 
