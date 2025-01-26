@@ -60,7 +60,7 @@ if analizer_select == 'Mindray BS240':
 if analizer_select == 'ecl8000':
     analiser_df = pd.read_excel('ecl8000',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
     st.image('https://avatars.mds.yandex.net/i?id=95455488b4a7f0c0a6f878d11db1d86e_l-9102470-images-thumbs&n=13', width=250)
-if analizer_select == 'Красители/Общая клиника':
+if analizer_select == 'Красители-Общая клиника':
     analiser_df = pd.read_excel('Красители/Общая клиника',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
     st.image('https://www.deznet.ru/upload/iblock/ff9/s33b9e9x7goxqhxpeb9ogdpg3ma24qk5.jpg', width=250)
 
