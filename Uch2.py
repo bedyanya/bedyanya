@@ -24,6 +24,12 @@ if analizer_select =='ERBA XL-1000':
 if analizer_select =='ACL TOP 550':
     analiser_df =pd.read_excel('ACLTOP-550.xlsx',sheet_name='Лист1',engine='openpyxl')
     st.image('https://avatars.mds.yandex.net/i?id=11dd2705f9f88d64fd10160131cee70006839ba0-9860796-images-thumbs&n=13',width=250)
+if analizer_select == 'DxFlex':
+    analiser_df =pd.read_excel('DXFlex.xlsx',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
+    st.image('https://medtour.help/wp-content/uploads/2020/12/5fafc7cb6bcfbc002180166d_optimized.png', width=250)
+if analizer_select == 'Rotem Delta':
+    analiser_df = pd.read_excel('Rotem.xlsx',sheet_name='Лист1',engine='openpyxl',parse_dates=['дата списания', 'дата поставки'])
+    st.image('https://www.werfen.com/it/sites/default/files/inline-images/rotem-detlta-and-rotem-platelet.png', width =250)
 
     #grid_return = AgGrid(analiser_df, editable=True)
 #st.data_editor(grid_return['data'])
