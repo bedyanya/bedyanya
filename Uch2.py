@@ -105,7 +105,7 @@ if state == 'Поставки':
     save_to_db = st.button('Сохранить записи в базу данных')
     if save_to_db:
         analiser_df = pd.concat([analiser_df,st.session_state.data],ignore_index=True)
-        fp=Path(r'C:\Users\кусь\OneDrive\Рабочий стол\GOVNO', analizer_select+'.xlsx')
+        fp= analizer_select+'.xlsx'
         analiser_df.to_excel(fp,sheet_name='Лист1',index=False)
         st.session_state.data = pd.DataFrame(columns=analiser_df.columns)
         st.success('Данные сохранены',icon="✅")
@@ -184,7 +184,8 @@ if state == 'Списание':
                           '. Проверь правильность внесения данных')
             else:
                 analiser_df = pd.concat([analiser_df,st.session_state.data_spis],ignore_index=True)
-                analiser_df.to_excel(r'C:\Users\кусь\OneDrive\Рабочий стол\GOVNO\ERBA XL-1000.xlsx',sheet_name='Лист1',index=False) 
+                fp = analizer_select+'.xlsx'
+                analiser_df.to_excel(fp,sheet_name='Лист1',index=False) 
                 st.session_state.data_spis = pd.DataFrame(columns=analiser_df.columns)
                 st.success('Списание добавлено в базу данных',icon="✅")
     
