@@ -4,7 +4,7 @@ from datetime import datetime
 import streamlit as st
 from pathlib import Path
 #from st_aggrid import AgGrid
-
+pip install openpyxl
 
 analizator_option = ['ERBA XL-1000', 'ACL TOP 550', 'Rotem Delta', 'Erba Elite 580', 'Lifotronic H9', 'Maglumi', 
                      'Lazurit', 'DxI800', 'Группы крови/OrthoVision','Laura XL', 'ABL 800', 
