@@ -19,7 +19,7 @@ state = st.sidebar.radio('Выбери раздел',options=states,horizontal=F
 
 if analizer_select =='ERBA XL-1000':
     read_file = 'ERBAXL-1000.xlsx'
-    analiser_df =pd.read_excel(read_file,sheet_name='Лист1')
+    analiser_df =pd.read_excel(read_file)
     st.image('https://mqst.ru/t/j-vtEsPx-j7mktwwMuBrDhyqb7c=/0x1040/2022/02/pALPXoG3oKYqfKyW3hxS3LpdazZZ09hRnzoKZB7M.jpg', width=250)
 if analizer_select =='ACL TOP 550':
     analiser_df =pd.read_excel(r'C:\Users\кусь\OneDrive\Рабочий стол\GOVNO\ACL TOP 550.xlsx',sheet_name='Лист1',engine='openpyxl')
