@@ -257,7 +257,7 @@ if state == 'Итого в наличии':
             kats.append(kat)
             ms.append(m)
             ns.append(n)
-            nom = df_n['номенклатура']
+            nom = df_n['номенклатура 2024']
             noms.append(nom.iloc[0])
             #for l in list(df_n['лот'].unique()):
             #    df_lot = df_n[df_n['лот']==l]
@@ -269,11 +269,11 @@ if state == 'Итого в наличии':
             #    ms_lot.append(m_l)
             #    ns_lot.append(n)
             #    lots.append(l)
-            #    nom_l = df_lot['номенклатура']
+            #    nom_l = df_lot['номенклатура 2024']
             #    noms_lot.append(nom_l)
             #    razn_lot = np.sum(df_lot['поступление кол-во'])-np.sum(df_lot['списано кол-во'])
             #    itog_list_lot.append(razn_lot)
-        dict_itog = {'REF':kats,'Реагент':ns, 'краткое наименование':ms,'ВСЕГО':itog_list, 'номенклатура':noms}
+        dict_itog = {'REF':kats,'Реагент':ns, 'краткое наименование':ms,'ВСЕГО':itog_list, 'номенклатура 2024':noms}
         df_itog = pd.DataFrame(dict_itog)
         st.dataframe(df_itog,hide_index=True, use_container_width=300)
         #if toggle_lot is True:
@@ -297,12 +297,12 @@ if state == 'Итого в наличии':
             itog_list2.append(razn2)
             kat2 = df_n2['каталожник'].iloc[0]
             m2 = df_n2['краткое наименование'].unique()
-            nom2 = df_n2['номенклатура'].iloc[0]
+            nom2 = df_n2['номенклатура 2024'].iloc[0]
             noms2.append(nom2)
             kats2.append(kat2)
             ms2.append(m2)
             ns2.append(n2)
-        dict_itog2 = {'REF':kats2,'Реагент':ns2, 'краткое наименование':ms2,'ВСЕГО':itog_list2, 'номенклатура':noms2}
+        dict_itog2 = {'REF':kats2,'Реагент':ns2, 'краткое наименование':ms2,'ВСЕГО':itog_list2, 'номенклатура 2024':noms2}
         df_itog2 = pd.DataFrame(dict_itog2)
         st.dataframe(df_itog2,use_container_width=200, hide_index=True)
 
