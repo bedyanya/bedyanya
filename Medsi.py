@@ -183,6 +183,7 @@ def funk_kde(X):
 
     # ГРАФИК
     fig1, ax1 = plt.subplots()
+    fig1.suptitle(f'N = {len(X)}')
     ax1.set_title(f'Базовая модель. Референс: {L2} - {H2}')
     ax1.hist(A,density=True,bins = 80)
     ax1.plot(UX,kde_f_y,color='orange', linewidth=2)
