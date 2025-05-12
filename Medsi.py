@@ -403,7 +403,10 @@ if uploaded_file is not None:
 
     select_test = st.sidebar.selectbox('Выбери столбец',df.columns)
 
+    st.sidebar.text('Базовая модель работает лучше, когда в норме показатель имеет приближенно нормальное распределение, и нет большой примеси патологических результатов')
+
     calc_norm = st.sidebar.button('Рассчитать по базовой модели')
+    
 
     calc_log =  st.sidebar.button('Рассчитать по модели с логарифмированием')
     if calc_norm:
