@@ -183,7 +183,7 @@ def funk_kde(X):
 
     # ГРАФИК
     fig1, ax1 = plt.subplots()
-    fig1.suptitle(f'N = {len(X)}')
+    fig1.suptitle(f'N = {len(r)}')
     ax1.set_title(f'Базовая модель. Референс: {L2} - {H2}')
     ax1.hist(A,density=True,bins = 80)
     ax1.plot(UX,kde_f_y,color='orange', linewidth=2)
@@ -388,7 +388,7 @@ def log_funk_kde(X):
     #plt.title(title)
     
     fig, ax = plt.subplots()
-    fig.suptitle(f'N = {len(X)}')
+    fig.suptitle(f'N = {len(l)}')
     ax.set_title(f'Модель с логтрансформацией. Референс: {LL2} - {HH2}')
     ax.hist(X,density=True,bins = 80)
     ax.plot(UXX,kde_f_y,color='orange', linewidth=2)
