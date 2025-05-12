@@ -387,7 +387,7 @@ def log_funk_kde(X):
     #plt.title(title)
     
     fig, ax = plt.subplots()
-    ax.text(f'N = {len(X)}')
+    fig.suptitle(f'N = {len(X)}')
     ax.set_title(f'Модель с логтрансформацией. Референс: {LL2} - {HH2}')
     ax.hist(X,density=True,bins = 80)
     ax.plot(UXX,kde_f_y,color='orange', linewidth=2)
