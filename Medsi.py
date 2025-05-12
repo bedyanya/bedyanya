@@ -11,7 +11,7 @@ from matplotlib import pyplot as plt
 #from dateutil.relativedelta import relativedelta
 
 st.title('Расчет референсных интервалов по алгоритму')
-st.header('Результаты в одном столбце')
+st.text('В загружаемом файле Excel результаты показателя должны быть в одном столбце, можно сразу несколько столбцов в одном файле, самая верхняя строка - заголовки для колонок')
 uploaded_file = st.sidebar.file_uploader("Выбери файл Excel на компе с данными по образцу",type='xlsx')
 
 def funk_kde(X):
