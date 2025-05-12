@@ -2,4 +2,9 @@ openpyxl
 pandas
 streamlit
 numpy
+scipy
+seaborn
+statsmodels.nonparametric.kde
+matplotlib
+
 
