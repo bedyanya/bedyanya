@@ -6,9 +6,9 @@ import seaborn as sns
 from scipy import stats
 from statsmodels.nonparametric.kde import KDEUnivariate
 from matplotlib import pyplot as plt
-from sklearn.linear_model import LinearRegression
-from datetime import datetime,date, timedelta
-from dateutil.relativedelta import relativedelta
+#from sklearn.linear_model import LinearRegression
+#from datetime import datetime,date, timedelta
+#from dateutil.relativedelta import relativedelta
 
 st.title('Расчет референсных интервалов по алгоритму')
 st.header('Результаты в одном столбце')
