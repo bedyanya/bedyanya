@@ -400,23 +400,57 @@ def log_funk_kde(X):
 
 
 
+radio = st.sidebar.radio('Шаблон',options = ['стандарт','интерлаб'])
+
+
 if uploaded_file is not None:
     df = pd.read_excel(uploaded_file, engine='openpyxl')
     st.write(df.head(10))
 
-    select_test = st.sidebar.selectbox('Выбери столбец',df.columns)
+    if radio == 'стандарт':
+        select_test = st.sidebar.selectbox('Выбери столбец',df.columns)
+        calc_norm = st.sidebar.button('Рассчитать по базовой модели')
+        calc_log =  st.sidebar.button('Рассчитать по модели с логарифмированием')
+        if calc_norm:
+            try:
+                r = df[select_test].dropna()
+                funk_kde(r)
+            except:
+                st.write('возможно, что-то не так с данными')
+            
 
-    calc_norm = st.sidebar.button('Рассчитать по базовой модели')
+        if calc_log:
+            try:
+                l = df[select_test].dropna()
+                log_funk_kde(l)
+            except:
+                st.write('возможно, что-то не так с данными')
     
+    if radio == 'интерлаб':
+        try:
+            df['Фамилия'].astype(str)
+            df['Имя'].astype(str)
+            df['Отчество'].astype(str)
+            df['Лет'].astype(int)
+            df['ФИО'] = df['Фамилия'] + df['Имя'] + df['Отчество']
+            df = df.drop_duplicates(subset='ФИО')
+        except:
+            st.write('Убедитесь, что вы загружаете верный шаблон ❌')
 
-    calc_log =  st.sidebar.button('Рассчитать по модели с логарифмированием')
-    if calc_norm:
-        r = df[select_test].dropna()
-        funk_kde(r)
+        slider = st.sidebar.slider('Укажите возрастной диапазон', 0, 120,(0,120))
+        try:
+            sdf = df[(df['Лет']>=slider[0]) & (df['Лет']<=slider[1])]
+        except:
+            st.write('В шаблоне отсутствует колонка Лет ❌')
 
-    if calc_log:
-        l = df[select_test].dropna()
-        log_funk_kde(l)
+        sex = st.sidebar.selectbox('Пол',['Все','Муж','Жен'])
+
+        if sex == 'Все':
+            pass
+        else:
+            sdf = sdf[sdf['Пол']==sex]
+
+
 
 
 
