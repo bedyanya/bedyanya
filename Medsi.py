@@ -436,6 +436,7 @@ if uploaded_file is not None:
             df = df.drop_duplicates(subset='ФИО')
         except:
             st.write('Убедитесь, что вы загружаете верный шаблон ❌')
+            st.write('Работа с данным шаблоном в разработке ❌')
 
         slider = st.sidebar.slider('Укажите возрастной диапазон', 0, 120,(0,120))
         try:
