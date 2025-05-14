@@ -183,7 +183,7 @@ def funk_kde(X):
 
     # ГРАФИК
     fig1, ax1 = plt.subplots()
-    fig1.suptitle(f'N = {len(r)}')
+    fig1.suptitle(f'N = {len(X)}')
     ax1.set_title(f'Базовая модель. Референс: {L2} - {H2}')
     ax1.hist(A,density=True,bins = 80)
     ax1.plot(UX,kde_f_y,color='orange', linewidth=2)
@@ -388,7 +388,7 @@ def log_funk_kde(X):
     #plt.title(title)
     
     fig, ax = plt.subplots()
-    fig.suptitle(f'N = {len(l)}')
+    fig.suptitle(f'N = {len(X)}')
     ax.set_title(f'Модель с логтрансформацией. Референс: {LL2} - {HH2}')
     ax.hist(X,density=True,bins = 80)
     ax.plot(UXX,kde_f_y,color='orange', linewidth=2)
@@ -401,7 +401,6 @@ def log_funk_kde(X):
 
 
 radio = st.sidebar.radio('Шаблон',options = ['стандарт','интерлаб'])
-
 
 if uploaded_file is not None:
     df = pd.read_excel(uploaded_file, engine='openpyxl')
@@ -427,31 +426,42 @@ if uploaded_file is not None:
                 st.write('возможно, что-то не так с данными')
     
     if radio == 'интерлаб':
-        try:
-            df['Фамилия'].astype(str)
-            df['Имя'].astype(str)
-            df['Отчество'].astype(str)
-            df['Лет'].astype(int)
-            df['ФИО'] = df['Фамилия'] + df['Имя'] + df['Отчество']
-            df = df.drop_duplicates(subset='ФИО')
-        except:
-            st.write('Убедитесь, что вы загружаете верный шаблон ❌')
-            st.write('Работа с данным шаблоном в разработке ❌')
+        
+        df['Фамилия'].astype(str)
+        df['Имя'].astype(str)
+        df['Отчество'].astype(str)
+        df['ФИО'] = df['Фамилия'] + df['Имя'] + df['Отчество']
+        df['Результат']=df['Результат'].apply(lambda x: float(str(x).replace('&gt;','')))
+        df = df.dropna(subset=['Результат'])
+        df = df.drop_duplicates(subset='ФИО')
+
 
         slider = st.sidebar.slider('Укажите возрастной диапазон', 0, 120,(0,120))
-        try:
-            sdf = df[(df['Лет']>=slider[0]) & (df['Лет']<=slider[1])]
-        except:
-            st.write('В шаблоне отсутствует колонка Лет ❌')
 
-        sex = st.sidebar.selectbox('Пол',['Все','Муж','Жен'])
+        df = df[(df['Лет']>=slider[0]) & (df['Лет']<=slider[1])]
+
+        sex = st.sidebar.selectbox('Пол',['Все','Мужской','Женский'])
 
         if sex == 'Все':
             pass
         else:
-            sdf = sdf[sdf['Пол']==sex]
+            sdf = df[df['Пол']==sex]
 
+        calc_norm2 = st.sidebar.button('Рассчитать по базовой модели')
+        calc_log2 =  st.sidebar.button('Рассчитать по модели с логарифмированием')
 
+        if calc_norm2:
+            try:
+                funk_kde(sdf['Результат'])
+            except:
+                st.write('возможно, что-то не так с данными')
+            
+
+        if calc_log2:
+            try:
+                log_funk_kde(sdf['Результат'])
+            except:
+                st.write('возможно, что-то не так с данными')
 
 
 
