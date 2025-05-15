@@ -400,7 +400,7 @@ def log_funk_kde(X):
 
 
 
-radio = st.sidebar.radio('Шаблон',options = ['стандарт','интерлаб'])
+radio = st.sidebar.radio('Шаблон',options = ['стандарт','интерсистемс'])
 
 if uploaded_file is not None:
     df = pd.read_excel(uploaded_file, engine='openpyxl')
@@ -425,7 +425,7 @@ if uploaded_file is not None:
             except:
                 st.write('возможно, что-то не так с данными')
     
-    if radio == 'интерлаб':
+    if radio == 'интерсистемс':
         
         df['Фамилия'].astype(str)
         df['Имя'].astype(str)
