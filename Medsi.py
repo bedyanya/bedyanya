@@ -7,13 +7,12 @@ from scipy import stats
 from statsmodels.nonparametric.kde import KDEUnivariate
 from matplotlib import pyplot as plt
 #from sklearn.linear_model import LinearRegression
-#from datetime import datetime,date, timedelta
-#from dateutil.relativedelta import relativedelta
+from datetime import datetime,date, timedelta
+from dateutil.relativedelta import relativedelta
 
-st.title('Расчет референсных интервалов по алгоритму')
-st.text('В загружаемом файле Excel результаты показателя должны быть в одном столбце, можно сразу несколько столбцов в одном файле, самая верхняя строка - заголовки для колонок')
-st.text('Базовая модель работает лучше, когда в норме показатель имеет приближенно нормальное распределение и нет большой примеси патологических результатов. В большинстве случаев предпочтительнее модель с предварительным логарифмированием данных')
-uploaded_file = st.sidebar.file_uploader("Выбери файл Excel на компе с данными по образцу",type='xlsx')
+
+
+uploaded_file = st.sidebar.file_uploader("Выбери файл Excel на компе с данными по образцу",type=['xlsx','xls'])
 
 def funk_kde(X):
     Low=[]
@@ -397,22 +396,23 @@ def log_funk_kde(X):
     ax.set_xlim(Muopt-5*SDopt,Muopt+5*SDopt)
     st.pyplot(fig)
 
-
-
-
 radio = st.sidebar.radio('Шаблон',options = ['стандарт','интерсистемс'])
+radio_model = st.sidebar.radio('Модель', ['Свой вариант','kosmic','refineR'])
 
 if uploaded_file is not None:
     df = pd.read_excel(uploaded_file, engine='openpyxl')
     st.write(df.head(10))
 
     if radio == 'стандарт':
+        st.write('В загружаемом файле Excel результаты показателя должны быть в одном столбце, '
+         'можно сразу несколько столбцов в одном файле, самая верхняя строка - заголовки для колонок') 
         select_test = st.sidebar.selectbox('Выбери столбец',df.columns)
         calc_norm = st.sidebar.button('Рассчитать по базовой модели')
         calc_log =  st.sidebar.button('Рассчитать по модели с логарифмированием')
         if calc_norm:
             try:
                 r = df[select_test].dropna()
+                r=r.apply(lambda x: float(str(x).translate({ord(i): None for i in '&gt;l'})))
                 funk_kde(r)
             except:
                 st.write('возможно, что-то не так с данными')
@@ -421,47 +421,87 @@ if uploaded_file is not None:
         if calc_log:
             try:
                 l = df[select_test].dropna()
+                l=l.apply(lambda x: float(str(x).translate({ord(i): None for i in '&gt;l'})))
                 log_funk_kde(l)
             except:
                 st.write('возможно, что-то не так с данными')
     
     if radio == 'интерсистемс':
+        st.write('Перед загрузкой файла отчёта по Результатам удалите верхние строчки, ' \
+        'оставив в качестве первой строки названия столбцов, сохраните файл как Книгу Excel')
         
         df['Фамилия'].astype(str)
         df['Имя'].astype(str)
         df['Отчество'].astype(str)
         df['ФИО'] = df['Фамилия'] + df['Имя'] + df['Отчество']
-        df['Результат']=df['Результат'].apply(lambda x: float(str(x).replace('&gt;','')))
-        df = df.dropna(subset=['Результат'])
+        #df['Результат']=df['Результат'].apply(lambda x: float(str(x).replace('&gt;','')))
+        df['Результат']=df['Результат'].apply(lambda x: float(str(x).translate({ord(i): None for i in '&gt;l'})))
+        df['Дата авторизации'] = pd.to_datetime(df['Дата авторизации']).dt.date
+        df = df.dropna(subset=['Результат','Дата авторизации'])
         df = df.drop_duplicates(subset='ФИО')
 
+        #st.write(df)
+        
+        depart = list(df['Отделение'].astype(str).sort_values().unique())
+                
+        box = st.form('Фильтры')
+        col1,col2,col3 = box.columns(3)
+        analizer = col1.selectbox('Прибор',df['Прибор'].unique())
+        minage = col2.number_input('Возраст от (лет)',min_value=0,max_value=100,step=1)
+        maxage = col3.number_input('Возраст до (лет)',min_value=1,max_value=120,step=1)
+        sex = col1.selectbox('Пол',['Все','Мужской','Женский'])
+        date_from = col2.date_input('Дата авторизации (от)',min(df['Дата авторизации']),min_value=min(df['Дата авторизации']),max_value=max(df['Дата авторизации']),format = 'DD/MM/YYYY')
+        date_to = col3.date_input('Дата авторизации (до)', max(df['Дата авторизации']),min_value=min(df['Дата авторизации']),max_value=max(df['Дата авторизации']),format = 'DD/MM/YYYY')
+        department = box.multiselect('Отделения', placeholder = 'Оставьте пустым, если нужны все отделения' , options=depart)
+        
 
-        slider = st.sidebar.slider('Укажите возрастной диапазон', 0, 120,(0,120))
+        sdf = df[df['Прибор']==analizer]
+        sdf = sdf[(sdf['Лет']>=minage) & (sdf['Лет']<=maxage)]
+        
+        sdf = sdf[(sdf['Дата авторизации']>=date_from) & (sdf['Дата авторизации']<=date_to)]
+        
+        if department in list(depart):
+            sdf = sdf[sdf['Отделение'].isin(list(department))]
+        else:
+            pass
 
-        df = df[(df['Лет']>=slider[0]) & (df['Лет']<=slider[1])]
-
-        sex = st.sidebar.selectbox('Пол',['Все','Мужской','Женский'])
+        #sex = st.sidebar.selectbox('Пол',['Все','Мужской','Женский'])
 
         if sex == 'Все':
             pass
         else:
-            sdf = df[df['Пол']==sex]
+            sdf = sdf[sdf['Пол']==sex]
+        
+        if radio_model == 'Свой вариант':
+            calc_norm2 = box.form_submit_button('Рассчитать по базовой модели')
+            calc_log2 =  box.form_submit_button('Рассчитать по модели с логарифмированием')
 
-        calc_norm2 = st.sidebar.button('Рассчитать по базовой модели')
-        calc_log2 =  st.sidebar.button('Рассчитать по модели с логарифмированием')
-
-        if calc_norm2:
-            try:
-                funk_kde(sdf['Результат'])
-            except:
-                st.write('возможно, что-то не так с данными')
+            if calc_norm2:
+                try:
+                    st.write('Модель предпочтительнее, когда данные имеют нормальное распределение с относительно небольшим числом примесей патологических значений')
+                    funk_kde(sdf['Результат'])
+                except:
+                    st.write('возможно, что-то не так с данными')
             
 
-        if calc_log2:
-            try:
-                log_funk_kde(sdf['Результат'])
-            except:
-                st.write('возможно, что-то не так с данными')
+            if calc_log2:
+                try:
+                    st.write('Модель с логтрансформацией предпочтительнее в большинстве случаев, ' \
+                    'когда данные не имеют нормальное распределение и/или имеют много примесей)' )
+                    st.write(f'всего значений {len(sdf['Результат'])}')
+                    log_funk_kde(sdf['Результат'])
+                except:
+                    st.write('возможно, что-то не так с данными')
+        
+        if radio_model == 'kosmic':
+            box.form_submit_button('Рассчитать по модели kosmic')
+            st.write('Когда-нибудь появится')
+
+        if radio_model == 'refineR':
+            box.form_submit_button('Рассчитать по модели refineR')
+            st.write('Когда-нибудь здесь появится и эта модель')
+
+
 
 
 
