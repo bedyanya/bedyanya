@@ -15,7 +15,7 @@ from dateutil.relativedelta import relativedelta
 uploaded_file = st.sidebar.file_uploader("Выбери файл Excel на компе с данными по образцу",
                                          type=['xlsx','xls'],
                                          help='NO HELP',
-                                         accept_multiple_files=False,)
+                                         accept_multiple_files=False)
 
 def funk_kde(X):
     Low=[]
