@@ -480,6 +480,16 @@ if uploaded_file is not None:
                 try:
                     st.write('Модель предпочтительнее, когда данные имеют нормальное распределение с относительно небольшим числом примесей патологических значений')
                     funk_kde(sdf['Результат'])
+                    
+                    fig,ax = plt.subplots()
+                    fig.set_size_inches(14,6)
+                    sns.scatterplot(data=sdf, x='Лет', y='Результат', hue = 'Пол')
+                    ax.set_xlabel('Возраст')
+                    ax.set_ylabel('Результат')
+                    iqr=np.percentile(sdf['Результат'],75) - np.percentile(sdf['Результат'],25)
+                    ax.set_ylim(np.median(sdf['Результат'])-2*iqr,np.median(sdf['Результат'])+5*iqr)
+                    ax.set_title('Динамика изменения показателя с возрастом')
+                    st.pyplot(fig)
                 except:
                     st.write('возможно, что-то не так с данными')
             
@@ -488,8 +498,19 @@ if uploaded_file is not None:
                 try:
                     st.write('Модель с логтрансформацией предпочтительнее в большинстве случаев, ' \
                     'когда данные не имеют нормальное распределение и/или имеют много примесей)' )
-                    st.write(f'всего значений {len(sdf['Результат'])}')
+                    
                     log_funk_kde(sdf['Результат'])
+                    
+                    fig,ax = plt.subplots()
+                    fig.set_size_inches(14,6)
+                    sns.scatterplot(data=sdf, x='Лет', y='Результат', hue = 'Пол')
+                    ax.set_xlabel('Возраст')
+                    ax.set_ylabel('Результат')
+                    iqr=np.percentile(sdf['Результат'],75) - np.percentile(sdf['Результат'],25)
+                    ax.set_ylim(np.median(sdf['Результат'])-2*iqr,np.median(sdf['Результат'])+5*iqr)
+                    ax.set_title('Динамика изменения показателя с возрастом')
+                    st.pyplot(fig)
+             
                 except:
                     st.write('возможно, что-то не так с данными')
         
