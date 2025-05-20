@@ -12,7 +12,10 @@ from dateutil.relativedelta import relativedelta
 
 
 
-uploaded_file = st.sidebar.file_uploader("Выбери файл Excel на компе с данными по образцу",type=['xlsx','xls'])
+uploaded_file = st.sidebar.file_uploader("Выбери файл Excel на компе с данными по образцу",
+                                         type=['xlsx','xls'],
+                                         help='NO HELP',
+                                         accept_multiple_files=False,)
 
 def funk_kde(X):
     Low=[]
@@ -430,10 +433,14 @@ if uploaded_file is not None:
         st.write('Перед загрузкой файла отчёта по Результатам удалите верхние строчки, ' \
         'оставив в качестве первой строки названия столбцов, сохраните файл как Книгу Excel')
         
+        
         df['Фамилия'].astype(str)
         df['Имя'].astype(str)
         df['Отчество'].astype(str)
         df['ФИО'] = df['Фамилия'] + df['Имя'] + df['Отчество']
+        
+        st.write('В файле нет ФИО, удаление дубликатов не произведено')
+
         #df['Результат']=df['Результат'].apply(lambda x: float(str(x).replace('&gt;','')))
         df['Результат']=df['Результат'].apply(lambda x: float(str(x).translate({ord(i): None for i in '&gt;l'})))
         df['Дата авторизации'] = pd.to_datetime(df['Дата авторизации']).dt.date
@@ -480,7 +487,7 @@ if uploaded_file is not None:
                 try:
                     st.write('Модель предпочтительнее, когда данные имеют нормальное распределение с относительно небольшим числом примесей патологических значений')
                     funk_kde(sdf['Результат'])
-                    
+
                     fig,ax = plt.subplots()
                     fig.set_size_inches(14,6)
                     sns.scatterplot(data=sdf, x='Лет', y='Результат', hue = 'Пол')
@@ -498,9 +505,9 @@ if uploaded_file is not None:
                 try:
                     st.write('Модель с логтрансформацией предпочтительнее в большинстве случаев, ' \
                     'когда данные не имеют нормальное распределение и/или имеют много примесей)' )
-                    
+                    #st.write(f'всего значений {len(sdf['Результат'])}')
                     log_funk_kde(sdf['Результат'])
-                    
+
                     fig,ax = plt.subplots()
                     fig.set_size_inches(14,6)
                     sns.scatterplot(data=sdf, x='Лет', y='Результат', hue = 'Пол')
@@ -510,7 +517,6 @@ if uploaded_file is not None:
                     ax.set_ylim(np.median(sdf['Результат'])-2*iqr,np.median(sdf['Результат'])+5*iqr)
                     ax.set_title('Динамика изменения показателя с возрастом')
                     st.pyplot(fig)
-             
                 except:
                     st.write('возможно, что-то не так с данными')
         
