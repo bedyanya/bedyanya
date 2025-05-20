@@ -439,13 +439,13 @@ if uploaded_file is not None:
         #df['Отчество'].astype(str)
         #df['ФИО'] = df['Фамилия'] + df['Имя'] + df['Отчество']
         #st.write('В файле нет ФИО, удаление дубликатов не произведено')
-
+        #df = df.drop_duplicates(subset='ФИО')
+      
         #df['Результат']=df['Результат'].apply(lambda x: float(str(x).replace('&gt;','')))
         df['Результат']=df['Результат'].apply(lambda x: float(str(x).translate({ord(i): None for i in '&gt;l'})))
         df['Дата авторизации'] = pd.to_datetime(df['Дата авторизации']).dt.date
         df = df.dropna(subset=['Результат','Дата авторизации'])
-        df = df.drop_duplicates(subset='ФИО')
-
+        
         #st.write(df)
         
         depart = list(df['Отделение'].astype(str).sort_values().unique())
