@@ -13,9 +13,7 @@ from datetime import datetime,date, timedelta
 
 
 uploaded_file = st.sidebar.file_uploader("Выбери файл Excel на компе с данными по образцу",
-                                         type=['xlsx','xls'],
-                                         help='NO HELP',
-                                         accept_multiple_files=False)
+                                         type=['xlsx','xls'])
 
 def funk_kde(X):
     Low=[]
