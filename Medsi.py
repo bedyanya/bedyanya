@@ -398,7 +398,7 @@ def log_funk_kde(X):
     st.pyplot(fig)
 
 radio = st.sidebar.radio('Шаблон',options = ['стандарт','интерсистемс'])
-radio_model = st.sidebar.radio('Модель', ['Свой вариант','kosmic','refineR'])
+radio_model = st.sidebar.radio('Модель', ['Среднее по пациентам','Свой вариант','kosmic','refineR'])
 
 if uploaded_file is not None:
     df = pd.read_excel(uploaded_file, engine='openpyxl')
@@ -524,6 +524,46 @@ if uploaded_file is not None:
         if radio_model == 'refineR':
             box.form_submit_button('Рассчитать по модели refineR')
             st.write('Когда-нибудь здесь появится и эта модель')
+          
+        if radio_model == 'Среднее по пациентам':
+            dynamic = box.form_submit_button('Показать ди намику')
+            unique_date = sorted(df['Дата авторизации'].unique())
+            ran = list(range(1,len(unique_date)+1))
+
+            M=[]
+            Med =[]
+            per2_5 = []
+            per97_5=[]
+
+            for n in unique_date:
+                 mdf = df[df['Дата авторизации']==n]
+                 MEAN = mdf['Результат'].mean()
+                 meds = mdf['Результат'].median()
+                 M.append(MEAN)
+                 Med.append(meds)
+    
+                 q1 = np.percentile(mdf['Результат'],2.5)
+                 per2_5.append(q1)
+    
+                 q2= np.percentile(mdf['Результат'],97.5)
+                 per97_5.append(q2)
+
+            if dynamic:
+                try:
+                    fig2, ax2 = plt.subplots()
+                    fig2.set_size_inches(14,8)
+                    ax2.plot(ran,M,color='r',label='Среднее')
+                    ax2.plot(ran,Med,color='y',label='Медиана')
+                    ax2.plot(ran,per2_5,color='g',label='перцентиль 2.5%')
+                    ax2.plot(ran,per97_5,color='b',label='перцентиль 97.5')
+                    ax2.set_title('Среднее/медиана/перцентили по дням')
+                    ax2.legend()
+                    
+                    st.pyplot(fig2)
+                except:
+                    st.write('Не получилось рассчитать')
+
+ 
 
 
 
