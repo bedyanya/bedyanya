@@ -526,7 +526,7 @@ if uploaded_file is not None:
             st.write('Когда-нибудь здесь появится и эта модель')
           
         if radio_model == 'Среднее по пациентам':
-            dynamic = box.form_submit_button('Показать ди намику')
+            dynamic = box.form_submit_button('Показать динамику')
             unique_date = sorted(df['Дата авторизации'].unique())
             ran = list(range(1,len(unique_date)+1))
 
