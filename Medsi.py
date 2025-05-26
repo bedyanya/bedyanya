@@ -413,7 +413,7 @@ if uploaded_file is not None:
         if calc_norm:
             try:
                 r = df[select_test].dropna()
-                r=r.apply(lambda x: float(str(x).translate({ord(i): None for i in '&gt;l'})))
+                r=r.apply(lambda x: float(str(x).translate({ord(i): None for i in '&gt;l<>'})))
                 funk_kde(r)
             except:
                 st.write('возможно, что-то не так с данными')
@@ -422,7 +422,7 @@ if uploaded_file is not None:
         if calc_log:
             try:
                 l = df[select_test].dropna()
-                l=l.apply(lambda x: float(str(x).translate({ord(i): None for i in '&gt;l'})))
+                l=l.apply(lambda x: float(str(x).translate({ord(i): None for i in '&gt;l<>'})))
                 log_funk_kde(l)
             except:
                 st.write('возможно, что-то не так с данными')
