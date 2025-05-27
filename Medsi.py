@@ -440,7 +440,7 @@ if uploaded_file is not None:
         #df = df.drop_duplicates(subset='ФИО')
       
         #df['Результат']=df['Результат'].apply(lambda x: float(str(x).replace('&gt;','')))
-        df['Результат']=df['Результат'].apply(lambda x: float(str(x).translate({ord(i): None for i in '&gt;l'})))
+        df['Результат']=df['Результат'].apply(lambda x: float(str(x).translate({ord(i): None for i in '&gt;l<>'})))
         df['Дата авторизации'] = pd.to_datetime(df['Дата авторизации']).dt.date
         df = df.dropna(subset=['Результат','Дата авторизации'])
         
@@ -464,7 +464,7 @@ if uploaded_file is not None:
         
         sdf = sdf[(sdf['Дата авторизации']>=date_from) & (sdf['Дата авторизации']<=date_to)]
         
-        if department in list(depart):
+         if any(n in depart for n in department):
             sdf = sdf[sdf['Отделение'].isin(list(department))]
         else:
             pass
@@ -527,7 +527,7 @@ if uploaded_file is not None:
           
         if radio_model == 'Среднее по пациентам':
             dynamic = box.form_submit_button('Показать динамику')
-            unique_date = sorted(df['Дата авторизации'].unique())
+            unique_date = sorted(sdf['Дата авторизации'].unique())
             ran = list(range(1,len(unique_date)+1))
 
             M=[]
@@ -536,7 +536,7 @@ if uploaded_file is not None:
             per97_5=[]
 
             for n in unique_date:
-                 mdf = df[df['Дата авторизации']==n]
+                 mdf = sdf[sdf['Дата авторизации']==n]
                  MEAN = mdf['Результат'].mean()
                  meds = mdf['Результат'].median()
                  M.append(MEAN)
