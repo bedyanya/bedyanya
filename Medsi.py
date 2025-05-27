@@ -464,7 +464,7 @@ if uploaded_file is not None:
         
         sdf = sdf[(sdf['Дата авторизации']>=date_from) & (sdf['Дата авторизации']<=date_to)]
         
-         if any(n in depart for n in department):
+        if any(n in depart for n in department):
             sdf = sdf[sdf['Отделение'].isin(list(department))]
         else:
             pass
