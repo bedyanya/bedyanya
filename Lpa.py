@@ -35,7 +35,7 @@ sidebox.form_submit_button('Пересчитать калибровочную к
 #====================================================================
 
 box = st.form('Рассчитать')
-inp = box.number_input('Внесите значение Lp(a) в мг/дл для пересчёта')
+inp = box.number_input('Внесите значение Lp(a) в мг/дл для пересчёта',step=0.001,format="%f")
 column1,column2 = box.columns(2)
 box_button = box.form_submit_button('Пересчитать в нмоль/л')
 
