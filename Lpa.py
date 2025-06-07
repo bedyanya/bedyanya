@@ -1,4 +1,6 @@
 from scipy import interpolate
+from scipy.optimize import fsolve
+from scipy.interpolate import InterpolatedUnivariateSpline
 import numpy as np
 from numpy.polynomial import Polynomial
 from matplotlib import pyplot as plt
@@ -38,12 +40,21 @@ column1,column2 = box.columns(2)
 box_button = box.form_submit_button('Пересчитать в нмоль/л')
 
 #====================================================================
+
+box2 = st.form('OD')
+input_OD = box2.number_input('Внесите значение OD',step=0.0001,format="%f")
+box2_button = box2.form_submit_button('Рассчитать концентрацию в мг/дл и в нмоль/л по калибровочной кривой')
+
+#====================================================================
 mg = [с11,с12,с13,с14,с15,с16]
 op = [с21,с22,с23,с24,с25,с26]
 # получаем кубический интерполяционный сплайн
+# мг/дл ---> OD
 f_cubic = interpolate.interp1d(mg,op,kind='cubic')
+# OD ---> мг/дл
+from_op_to_mg = interpolate.interp1d(op,mg,kind='cubic')
 # генерируем кривую 
-x_data = np.linspace(с11,с16,200)
+x_data = np.linspace(с11,с16,1200)
 f_op = f_cubic(x_data)
 
 
@@ -60,6 +71,7 @@ ax.set_ylabel('OD')
 st.pyplot(fig)
 
 #====================================================================
+# Калибратор
 mol = [с31, с32, с33, с34, с35, с36]
 f_cub = interpolate.interp1d(mg,mol,kind='cubic')
 f_lin = interpolate.interp1d(mg,mol,kind='linear')
@@ -69,7 +81,7 @@ data_mol_lin = f_lin(data_mg)
 approx = Polynomial.fit(mg,mol,3)
 poly = approx(data_mg)
 #====================================================================
-
+# Графики по калибратору
 fig2, ax2 = plt.subplots(nrows=1,ncols=2)
 fig2.set_size_inches(14,6)
 ax2[0].plot(data_mg,data_mol,label='Кубический интерполяционный сплайн',color='g')
@@ -86,16 +98,14 @@ ax2[1].set_ylabel('нмоль')
 st.pyplot(fig2)
 
 #====================================================================
-# По калибровочной кривой строим обратную для нмоль/л
-f_cubic_mol = interpolate.interp1d(op,mol,kind='cubic')
-data_op = np.linspace(с21,с26,1200)
-data_op_mol = f_cubic_mol(data_op)
-
 
 if box_button:
     column1.write('Расчет по калибровочной кривой:')
     try:
-        column1.text(f_cubic_mol(f_cubic(inp)).round(3))
+        num = f_cubic(inp)
+        num_mol = InterpolatedUnivariateSpline(mol,op-num).roots().round(3)
+        column1.text(num_mol[0])
+        #column1.text(f_cubic_mol(f_cubic(inp)).round(3))
     except:
         column1.write('Значение вне калибровочной кривой')
 
@@ -107,13 +117,15 @@ if box_button:
     except:
         column2.write('Значение вне калибровочной кривой')
 #====================================================================
-#fig3, ax3 = plt.subplots()
-#fig3.set_size_inches(14,6)
 
-#ax3.plot(data_op, data_op_mol, label='Кубический сплайн, нмоль')
-#ax3.scatter(op,mol)
-#ax3.set_xlabel('OD')
-#ax3.set_ylabel('нмоль/л')
+if box2_button:
+    try:
+        n_mg = InterpolatedUnivariateSpline(mg,np.array(op)-input_OD).roots().round(3)
+        n_mol = InterpolatedUnivariateSpline(mol,np.array(op)-input_OD).roots().round(3)
 
-#st.pyplot(fig3)
+        box2.text(f'{n_mg[0]}' ' мг/дл')
+        box2.text(f'{n_mol[0]}' ' нмоль/л')
+    except:
+        box2.write('Значение OD вне диапазона калибровочной кривой')
+
 #====================================================================
