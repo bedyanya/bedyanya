@@ -12,8 +12,7 @@ from datetime import datetime,date, timedelta
 
 
 
-uploaded_file = st.sidebar.file_uploader("Выбери файл Excel на компе",
-                                         type=['xlsx','xls'])
+uploaded_file = st.sidebar.file_uploader("Выбери файл Excel на компе",type=['xlsx','xls'])
 st.write('Шаблон Стандарт: результаты в файле должны располагаться в одном столбце, можно несколько столбцов с разными результатами. Верхняя строчка - заголовок')
 st.write('Шаблон Интерсистемс: результат выгрузки отчета по результатам теста за период. \
               Перед загрузкой файла удалите верхние строчки до заголовков колонок. \
@@ -572,6 +571,7 @@ if uploaded_file is not None:
                     st.write('Не получилось рассчитать')
 
  
+
 
 
 
