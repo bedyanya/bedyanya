@@ -1,3 +1,4 @@
+python_version == "3.12"
 openpyxl
 pandas
 streamlit
@@ -8,4 +9,3 @@ statsmodels
 matplotlib
 datetime
 dateutil
-
