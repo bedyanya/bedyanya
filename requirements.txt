@@ -1,6 +1,4 @@
-openpyxl==3.1.2
 pandas
-streamlit
 numpy
 scipy
 seaborn
