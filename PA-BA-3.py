@@ -834,7 +834,8 @@ if uploaded_file:
         for m, (b1, b2) in enumerate(st.session_state.pairs): 
             data = df[[b1, b2]].apply(pd.to_numeric, errors='coerce').dropna()
             #наоборот должна быть лямбда
-            lam = 1/lambdas[m]
+            if report_mode =="BA+Deming" or report_mode =="BA+Mountain+Deming":
+                lam = 1/lambdas[m]
   
             x = data[b2].values 
             y = data[b1].values 
@@ -1000,3 +1001,4 @@ else:
     st.info("Загрузите excel-файл")
     st.info("Данные должны располагаться в столбцах и иметь заголовки. \
                Можно запустить анализ сразу нескольких методов.")
+
