@@ -311,7 +311,7 @@ def passing_bablok(x, y, alpha=0.05):
          "kendall": (kendall_tau, kendall_p,kendall_tau_lo,kendall_tau_hi) } 
 
 # Функция, рисующая регрессию Пассинга-Баблока    
-def plot_passing_bablok(x, y, res, title, from_zero=False): 
+def plot_passing_bablok(x, y, res, title, from_zero=False, legend_loc): 
     fig, ax = plt.subplots(figsize=(8, 6),dpi=200)
     ax.scatter(x, y, alpha=0.6) 
     xmin, xmax = np.min(x), np.max(x) 
@@ -351,7 +351,7 @@ def plot_passing_bablok(x, y, res, title, from_zero=False):
     ax.set_xlabel(f"{b2}") 
     ax.set_ylabel(f"{b1}") 
     ax.grid(True, alpha=0.3) 
-    ax.legend()
+    ax.legend(loc=legend_loc)
  
     #ax.legend(frameon=False)
     
@@ -450,7 +450,7 @@ def deming_bootstrap_ci(
             "intercept_ci": (round(dintercept_ci[0],4), round(dintercept_ci[1],4))}
 
 # Функция, рисующая регрессию Дёминга    
-def plot_deming(x, y, dres, dres_ci, title, from_zero=False): 
+def plot_deming(x, y, dres, dres_ci, title, from_zero=False, legend_loc): 
     fig, ax = plt.subplots(figsize=(8, 6),dpi=200)
     ax.scatter(x, y, alpha=0.6,color="purple") 
     xmin, xmax = np.min(x), np.max(x) 
@@ -490,7 +490,7 @@ def plot_deming(x, y, dres, dres_ci, title, from_zero=False):
     ax.set_xlabel(f"{b2}") 
     ax.set_ylabel(f"{b1}") 
     ax.grid(True, alpha=0.3) 
-    ax.legend()
+    ax.legend(loc=legend_loc)
  
     #ax.legend(frameon=False)
     
@@ -611,6 +611,8 @@ if uploaded_file:
                                                              "BA+Deming",
                                                              "BA+Mountain+Deming"]) 
     pb_zero = st.sidebar.checkbox("График регрессии от 0", value=False)
+    location_list = ['best', 'upper right', 'upper left', 'lower left', 'lower right']
+    legend_loc = st.sidebar.selectbox("Положение легенды", location_list, value = 'best')
     lam = 1
     lambdas = []
     if report_mode =="BA+Deming" or report_mode =="BA+Mountain+Deming":
@@ -1001,4 +1003,5 @@ else:
     st.info("Загрузите excel-файл")
     st.info("Данные должны располагаться в столбцах и иметь заголовки. \
                Можно запустить анализ сразу нескольких методов.")
+
 
