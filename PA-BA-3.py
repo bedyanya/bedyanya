@@ -710,7 +710,7 @@ if uploaded_file:
 
         def PB_show(): 
             st.subheader("Passing–Bablok")
-            fig_pb = plot_passing_bablok(x, y, pb_res, f"{b1} vs {b2}  (n = {len(x)})", from_zero=pb_zero)
+            fig_pb = plot_passing_bablok(x, y, pb_res, f"{b1} vs {b2}  (n = {len(x)})", from_zero=pb_zero, legend_loc = legend_loc)
             st.pyplot(fig_pb)
 
         def PB_table_show():    
@@ -794,7 +794,7 @@ if uploaded_file:
             st.subheader("Deming regression")
             dres = deming_regression(x, y, lambda_= lam)
             dres_ci = deming_bootstrap_ci(x,y,lambda_=lam)
-            fig_deming = plot_deming(x, y, dres, dres_ci, title= f"{b1} vs {b2}  (n = {len(x)})", from_zero=pb_zero)
+            fig_deming = plot_deming(x, y, dres, dres_ci, title= f"{b1} vs {b2}  (n = {len(x)})", from_zero=pb_zero, legend_loc = legend_loc)
             st.pyplot(fig_deming)
                     
         def Deming_table_show(dres, dres_ci):
@@ -1003,6 +1003,7 @@ else:
     st.info("Загрузите excel-файл")
     st.info("Данные должны располагаться в столбцах и иметь заголовки. \
                Можно запустить анализ сразу нескольких методов.")
+
 
 
 
