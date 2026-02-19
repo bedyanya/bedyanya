@@ -311,7 +311,7 @@ def passing_bablok(x, y, alpha=0.05):
          "kendall": (kendall_tau, kendall_p,kendall_tau_lo,kendall_tau_hi) } 
 
 # Функция, рисующая регрессию Пассинга-Баблока    
-def plot_passing_bablok(x, y, res, title, from_zero=False, legend_loc): 
+def plot_passing_bablok(x, y, res, title, from_zero=False, legend_loc='best'): 
     fig, ax = plt.subplots(figsize=(8, 6),dpi=200)
     ax.scatter(x, y, alpha=0.6) 
     xmin, xmax = np.min(x), np.max(x) 
@@ -450,7 +450,7 @@ def deming_bootstrap_ci(
             "intercept_ci": (round(dintercept_ci[0],4), round(dintercept_ci[1],4))}
 
 # Функция, рисующая регрессию Дёминга    
-def plot_deming(x, y, dres, dres_ci, title, from_zero=False, legend_loc): 
+def plot_deming(x, y, dres, dres_ci, title, from_zero=False, legend_loc='best'): 
     fig, ax = plt.subplots(figsize=(8, 6),dpi=200)
     ax.scatter(x, y, alpha=0.6,color="purple") 
     xmin, xmax = np.min(x), np.max(x) 
@@ -1003,5 +1003,6 @@ else:
     st.info("Загрузите excel-файл")
     st.info("Данные должны располагаться в столбцах и иметь заголовки. \
                Можно запустить анализ сразу нескольких методов.")
+
 
 
