@@ -612,7 +612,7 @@ if uploaded_file:
                                                              "BA+Mountain+Deming"]) 
     pb_zero = st.sidebar.checkbox("График регрессии от 0", value=False)
     location_list = ['best', 'upper right', 'upper left', 'lower left', 'lower right']
-    legend_loc = st.sidebar.selectbox("Положение легенды", location_list, value = 'best')
+    legend_loc = st.sidebar.selectbox("Положение легенды", location_list)
     lam = 1
     lambdas = []
     if report_mode =="BA+Deming" or report_mode =="BA+Mountain+Deming":
@@ -1003,6 +1003,7 @@ else:
     st.info("Загрузите excel-файл")
     st.info("Данные должны располагаться в столбцах и иметь заголовки. \
                Можно запустить анализ сразу нескольких методов.")
+
 
 
 
