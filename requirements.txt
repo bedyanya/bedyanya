@@ -5,4 +5,4 @@ seaborn
 statsmodels
 matplotlib
 openpyxl
-scikit-learn == 1.0.2 
+sklearn.utils
