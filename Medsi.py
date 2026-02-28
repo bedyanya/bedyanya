@@ -449,6 +449,7 @@ if uploaded_file is not None:
         #df['Результат']=df['Результат'].apply(lambda x: float(str(x).replace('&gt;','')))
         df['Результат']=df['Результат'].apply(lambda x: float(str(x).translate({ord(i): None for i in '&gt;l<>'})))
         df['Дата авторизации'] = pd.to_datetime(df['Дата авторизации']).dt.date
+        df['Прибор'] = df['Прибор'].fillna("не указан")
         df = df.dropna(subset=['Результат','Дата авторизации'])
         
         #st.write(df)
@@ -571,6 +572,7 @@ if uploaded_file is not None:
                     st.write('Не получилось рассчитать')
 
  
+
 
 
 
