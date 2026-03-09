@@ -599,7 +599,7 @@ def sqrt_funk_kde3(X):
     else:
         L_cor = L2.round(2)
         
-    if np.mean(alphas)<=0:
+    if np.mean(alphas)<=0.1:
         H_cor = HH2
     else:
         H_cor = H2
@@ -1023,6 +1023,7 @@ if uploaded_file is not None:
                 except:
                     st.write('Не получилось рассчитать')
                      
+
 
 
 
