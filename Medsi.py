@@ -681,16 +681,16 @@ def show_age_table(funktion, df):
             lw, hw = funktion(res_w)[-2:]
             age1 = f'{lis[k]}'+'-' f'{lis[k+1]}' 
             age_group.append(age1)
-            M = f'{lm}'+ '-' + f'{hm}'
+            M = f'{lm}'+ '-' + f'{hm}' + f' (N: {len(res_m)})'
             boys.append(M)
-            W = f'{lw}'+ '-' + f'{hw}'
+            W = f'{lw}'+ '-' + f'{hw}' f' (N: {len(res_w)})'
             girls.append(W)
         else: 
             lt, ht = funktion(res_total)[-2:]
             age1 = f'{lis[k]}'+'-' f'{lis[k+1]}' 
             age_group.append(age1)
-            M = f'{lt}'+ '-' + f'{ht}'
-            W = f'{lt}'+ '-' + f'{ht}'
+            M = f'{lt}'+ '-' + f'{ht}' + f' (N: {len(res_total)})'
+            W = f'{lt}'+ '-' + f'{ht}' + f' (N: {len(res_total)})'
             boys.append(M)
             girls.append(W)
 
@@ -1023,6 +1023,7 @@ if uploaded_file is not None:
                 except:
                     st.write('Не получилось рассчитать')
                      
+
 
 
 
