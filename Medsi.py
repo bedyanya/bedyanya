@@ -594,7 +594,7 @@ def sqrt_funk_kde3(X):
     
     # heuristic correction
     chek_low = (LL2-L2)/(L2+LL2)
-    if chek_low >0.7 and np.mean(alphas)>-0.3:
+    if chek_low >0.65 and np.mean(alphas)>-0.3:
         L_cor = LL2.round(2)
     else:
         L_cor = L2.round(2)
@@ -1023,6 +1023,7 @@ if uploaded_file is not None:
                 except:
                     st.write('Не получилось рассчитать')
                      
+
 
 
 
