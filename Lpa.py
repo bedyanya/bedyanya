@@ -125,8 +125,8 @@ if box2_button:
         n_mg = InterpolatedUnivariateSpline(mg,np.array(op)-input_OD).roots().round(3)
         n_mol = InterpolatedUnivariateSpline(mol,np.array(op)-input_OD).roots().round(3)
 
-        box2.text(f'{n_mg[0]}' ' мг/дл')
-        box2.text(f'{n_mol[0]}' ' нмоль/л')
+        box2.text(f'{n_mg[0]}' ' пг/мл')
+        box2.text(f'{n_mol[0]}' ' пг/мл')
     except:
         box2.write('Значение OD вне диапазона калибровочной кривой')
 
