@@ -17,7 +17,7 @@ col1,col2, col3 = sidebox.columns(3)
 
 с21 = col2.number_input('  OD 1',value= 23994.5,step=0.1,format="%f")
 с22 = col2.number_input('  OD 2',value= 99776.5,step=0.1, format="%f")
-с23 = col2.number_input('  OD 3',value= 477244,step=0.1,format="%f")
+с23 = col2.number_input('  OD 3',value= 477244.0,step=0.1,format="%f")
 с24 = col2.number_input('  OD 4',value= 2273422.5,step=0.1,format="%f")
 с25 = col2.number_input('  OD 5',value= 9279334.5,step=0.1,format="%f")
 с26 = col2.number_input('  OD 6',value= 16554929.5,step=0.1,format="%f")
