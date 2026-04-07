@@ -42,8 +42,10 @@ box_button = box.form_submit_button('Пересчитать в нмоль/л')
 #====================================================================
 
 box2 = st.form('OD')
-input_OD = box2.number_input('Внесите значение OD',step=0.0001,format="%f")
-box2_button = box2.form_submit_button('Рассчитать концентрацию в мг/дл и в нмоль/л по калибровочной кривой')
+#input_OD = box2.number_input('Внесите значение OD',step=0.0001,format="%f")
+input_OD = box2.number_input('Внесите значение RLU',step=0.1,format="%f")
+#box2_button = box2.form_submit_button('Рассчитать концентрацию в мг/дл и в нмоль/л по калибровочной кривой')
+box2_button = box2.form_submit_button('Рассчитать паратгормон по калибровочной кривой')
 
 #====================================================================
 mg = [с11,с12,с13,с14,с15,с16]
