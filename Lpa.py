@@ -67,8 +67,8 @@ ax.set_title('Калибровочная кривая')
 fig.set_size_inches(14,8)
 ax.plot(x_data,f_op,label='Кубический сплайн')
 ax.scatter(mg,op)
-ax.set_xlabel('мг/дл')
-ax.set_ylabel('OD')
+ax.set_xlabel('пг/мл')
+ax.set_ylabel('RLU')
 
 st.pyplot(fig)
 
@@ -128,6 +128,6 @@ if box2_button:
         box2.text(f'{n_mg[0]}' ' пг/мл')
         box2.text(f'{n_mol[0]}' ' пг/мл')
     except:
-        box2.write('Значение OD вне диапазона калибровочной кривой')
+        box2.write('Значение RLU вне диапазона калибровочной кривой')
 
 #====================================================================
