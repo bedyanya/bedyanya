@@ -6,3 +6,6 @@ statsmodels
 matplotlib
 openpyxl
 sklearn.utils
+docx
+datetime
+io
