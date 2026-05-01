@@ -458,7 +458,7 @@ with tab0:
     bb0 = st.container(border=True)
     c001 , c002, c003 = bb0.columns(3)
     ste = c001.number_input("TE %")
-    slevel = c002.number_input('Количество уровней для проверки (от 1 до 3)', min_value=1, max_value=3, step=1)
+    slevel = c002.number_input('Количество уровней (от 1 до 3)', min_value=1, max_value=3, step=1)
    
     
     if slevel == 1:
