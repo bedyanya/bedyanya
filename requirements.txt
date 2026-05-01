@@ -6,5 +6,5 @@ statsmodels
 matplotlib
 openpyxl
 sklearn.utils
-docx
+python-docx
 
