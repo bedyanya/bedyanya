@@ -583,7 +583,7 @@ with tab0:
             else:
                 st.warning('❗ В таблицах А1-А3 не учтены случаи, когда отношение CD/Swrl меньше 1')
             cdf = df[df['CD_Swrl']==uno[idx]]
-            st.write(cdf)
+            #st.write(cdf)
             srsw0 = round(aa[i]/bb[i],2)
             uno2 = np.array(cdf['Sr_Swrl'].unique())
             fvector2 = uno2-srsw0
