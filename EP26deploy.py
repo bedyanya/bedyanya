@@ -684,7 +684,7 @@ with tab0:
 
         dif = round(abs(tdf3[tdf3['Уровень']==i+1]['Разница'].mean()),3)
         tablo4["Абсолютная средняя разница"].append(dif)
-        tablo4['RL'].append(round(ff[i] * cc[i]*ste/100,2))
+        tablo4['RL'].append(round(ff[i] * cc[i]*ste/100,3))
         tablo4["Заключение"].append('✅ Приемлемо' if dif<(ff[i] * cc[i]*ste/100) else '❌ Не прошёл')
    
     
