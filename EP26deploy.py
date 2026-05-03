@@ -234,7 +234,7 @@ def add_table3_by_levels(doc, tablo3_dict, levels_info):
             'Разница': [f"{'+' if d > 0 else ''}{d}" for d in df_lvl['Разница']] })
 
         # Средняя абсолютная разница для футера
-        mean_abs = round(abs(df_lvl['Разница'].mean()), 2) if len(df_lvl) > 0 else 0
+        mean_abs = round(abs(df_lvl['Разница'].mean()), 3) if len(df_lvl) > 0 else 0
 
         add_scientific_table(
             doc,
@@ -682,7 +682,7 @@ with tab0:
         else:
              tablo4["Диапазон концентраций"].append('⚠️')
 
-        dif = round(abs(tdf3[tdf3['Уровень']==i+1]['Разница'].mean()),2)
+        dif = round(abs(tdf3[tdf3['Уровень']==i+1]['Разница'].mean()),3)
         tablo4["Абсолютная средняя разница"].append(dif)
         tablo4['RL'].append(round(ff[i] * cc[i]*ste/100,2))
         tablo4["Заключение"].append('✅ Приемлемо' if dif<(ff[i] * cc[i]*ste/100) else '❌ Не прошёл')
