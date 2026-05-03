@@ -527,7 +527,7 @@ with tab0:
     
 
 
-    if bb[0] !=0:
+    if bb[0] !=0 and cc[i] !=0:
         tablo = {"Концентрация": [cc[0]],
              "CD": [round(cc[0]*ste/100,2)],
              "Sr": [round(aa[0],2)] if cr03 == 'Sr' else [round(aa[0]*cc[0]/100,2)],
@@ -552,7 +552,7 @@ with tab0:
 
 
     for i in range(1,slevel):
-        if bb[i] !=0:
+        if bb[i] !=0 and cc[i] !=0:
             tablo["Концентрация"].append(cc[i])
             tablo["CD"].append(round(cc[i]*ste/100,2))
             tablo["Sr"].append(round(aa[i],2) if cr03 == 'Sr' else round(aa[i]*cc[i]/100,2))
@@ -574,7 +574,7 @@ with tab0:
     nn = ['⚠️','⚠️','⚠️']
     pp = ['⚠️','⚠️','⚠️']
     def table_search(df,i):
-        if bb[i] != 0:
+        if bb[i] != 0 and cc[i] !=0:
             cd0 = cc[i]*ste/100/bb[i] if cr04 == 'Swlr' else cc[i]*ste/100/(bb[i]*cc[i]/100)
             uno = np.array(df['CD_Swrl'].unique())
             fvector1 = uno - cd0
