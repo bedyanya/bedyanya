@@ -480,7 +480,7 @@ def anova(T, an, anova_dict, grubbs_dict, mcvrs, mcvws, UVLrs, UVLwls, cvr_vn, c
         for g in range (0, len(z)):
             if z[g] > Gcrit:
                 schet = schet + 1
-                outliers.append(t[g])
+                outliers.append(float(t[g]))
                 total2.iloc[g, i] = np.nan
                 if schet>=2:
                     st.warning('📢❗🚨 Два или более значений в течении одной серии являются выбросами! '
