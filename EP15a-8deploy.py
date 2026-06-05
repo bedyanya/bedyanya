@@ -609,7 +609,8 @@ def anova(T, an, anova_dict, grubbs_dict, mcvrs, mcvws, UVLrs, UVLwls, cvr_vn, c
     # Если есть выбросы: (копипаст на пофиг)
     if len(outliers)>=1:
         GM = np.mean(total2.stack())
-        SDtot2 = np.std(total2.stack().to_numpy(),ddof=1)
+        #SDtot2 = np.std(total2.stack().to_numpy(),ddof=1)
+        SDtot2 = np.nanstd(total2.values, ddof = 1)
         mean_i_list = []
         ssw_list2 = []
         ss_tot = []
@@ -640,7 +641,8 @@ def anova(T, an, anova_dict, grubbs_dict, mcvrs, mcvws, UVLrs, UVLwls, cvr_vn, c
         DF2 = Ns-k   # верно
         SS_b = sum(np.array(NS)*(np.array(mean_i_list)-GM)**2)   # взвешено по n_i: корректно и для несбалансированных серий
         SS_w = np.sum(ssw_list2)
-        SS_total = np.sum((total2.stack().to_numpy() - GM)**2)
+        #SS_total = np.sum((total2.stack().to_numpy() - GM)**2)
+        SS_total = np.nansum((total2.to_numpy() - GM)**2)
         #SS_w2 = round(SS_total - SS_b,3)
         #SS_total2 = sum(ss_tot)
         MS_b = SS_b/DF1
