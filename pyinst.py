@@ -142,9 +142,11 @@ if uploaded_file is not None:
                     fig.update_layout(scene = dict(xaxis = dict(range =[min(xs), max(xs)]), xaxis_title = fx,
                                       yaxis = dict(range = [min(ys), max(ys)]), yaxis_title = fy,
                                       zaxis = dict(range = [min(zs), max(zs)]), zaxis_title = fz))
-                    fig.show()
-                show_3d(xs,ys,zs,kat)
-
+                    #fig.show()
+                    return fig
+                fig3d = show_3d(xs,ys,zs,kat)
+                st.plotly_chart(fig3d, use_container_width=True)
+                
                 fig2d1 = show_2d(xs,ys,kat, fx, fy)
                 st.pyplot(fig2d1)
                 fig2d2 = show_2d(xs,zs,kat, fx, fz)
