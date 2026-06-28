@@ -141,7 +141,8 @@ if uploaded_file is not None:
                     fig.update_traces(marker = dict(size=2.5))
                     fig.update_layout(scene = dict(xaxis = dict(range =[min(xs), max(xs)]), xaxis_title = fx,
                                       yaxis = dict(range = [min(ys), max(ys)]), yaxis_title = fy,
-                                      zaxis = dict(range = [min(zs), max(zs)]), zaxis_title = fz))
+                                      zaxis = dict(range = [min(zs), max(zs)]), zaxis_title = fz),
+                                      coloraxis_colorbar = dict(title = 'Возраст'))
                     #fig.show()
                     return fig
                 fig3d = show_3d(xs,ys,zs,kat)
