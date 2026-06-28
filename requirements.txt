@@ -7,4 +7,5 @@ matplotlib
 openpyxl
 sklearn.utils
 python-docx
+plotly
 
