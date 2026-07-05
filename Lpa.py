@@ -8,12 +8,12 @@ import streamlit as st
 #====================================================================
 sidebox = st.sidebar.form('Calibration')
 col1,col2, col3 = sidebox.columns(3)
-с11 = col1.number_input('т1, пг/мл',value=0)
-с12 = col1.number_input('т2, пг/мл', value = 9.5)
-с13 = col1.number_input('т3, пг/мл', value = 61.1)
-с14 = col1.number_input('т4, пг/мл', value = 311)
-с15 = col1.number_input('т5, пг/мл', value = 1483)
-с16 = col1.number_input('т6, пг/мл', value = 3278)
+с11 = col1.number_input('т1, пг/мл',value=0.000)
+с12 = col1.number_input('т2, пг/мл', value = 9.500)
+с13 = col1.number_input('т3, пг/мл', value = 61.100)
+с14 = col1.number_input('т4, пг/мл', value = 311.000)
+с15 = col1.number_input('т5, пг/мл', value = 1483.000)
+с16 = col1.number_input('т6, пг/мл', value = 3278.000)
 
 с21 = col2.number_input('  OD 1',value= 21234.0,step=0.1,format="%f")
 с22 = col2.number_input('  OD 2',value= 88297.0,step=0.1, format="%f")
