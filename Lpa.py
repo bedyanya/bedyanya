@@ -22,12 +22,12 @@ col1,col2, col3 = sidebox.columns(3)
 с25 = col2.number_input('  OD 5',value= 8591976.0,step=0.1,format="%f")
 с26 = col2.number_input('  OD 6',value= 15766599.0,step=0.1,format="%f")
 
-с31 = col3.number_input(' пг/мл',value= 0)
-с32 = col3.number_input(' пг/мл',value= 9.5)
-с33 = col3.number_input(' пг/мл',value= 61.1)
-с34 = col3.number_input(' пг/мл',value= 311)
-с35 = col3.number_input(' пг/мл',value= 1483)
-с36 = col3.number_input(' пг/мл',value= 3278)
+с31 = col3.number_input(' пг/мл',value= 0.000)
+с32 = col3.number_input(' пг/мл',value= 9.500)
+с33 = col3.number_input(' пг/мл',value= 61.100)
+с34 = col3.number_input(' пг/мл',value= 311.000)
+с35 = col3.number_input(' пг/мл',value= 1483.000)
+с36 = col3.number_input(' пг/мл',value= 3278.000)
 
 #====================================================================
 
