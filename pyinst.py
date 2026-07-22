@@ -295,6 +295,12 @@ if uploaded_file is not None:
         #date_from = cb1.date_input('Дата авторизации (от)',min(df['Дата авторизации']),min_value=min(df['Дата авторизации']),max_value=max(df['Дата авторизации']),format = 'DD/MM/YYYY')
         #date_to = cb2.date_input('Дата авторизации (до)', max(df['Дата авторизации']),min_value=min(df['Дата авторизации']),max_value=max(df['Дата авторизации']),format = 'DD/MM/YYYY')
         sexbox = cb1.selectbox('Пол', options= ['Все', 'Мужской', 'Женский', 'Сравнить'])
+      
+        if 'Отправитель' in df.columns:
+            otp = cb2.number_input('Посчитать медианы по отправителям, если число проб >=' min_value = 1, value = 10)
+        else:
+            pass
+        
         #otpr = cb2.multiselect('Выбрать отправителей', options= df['Отправитель'].unique(), placeholder= 'Оставьте пустым, если нужны все')
         porog = box.number_input("Введите пороговое значение для отображения % результатов выше этого порога за день", step = 0.01)
         dynamic = box.form_submit_button('📈 Показать динамику')
@@ -336,7 +342,7 @@ if uploaded_file is not None:
 
             return M, Med, per25, per75, dolyas, days
 
-        def show_dispatcher(df):
+        def show_dispatcher(df, otp):
             fig, ax = plt.subplots()
             fig.set_size_inches(14,55)
             otprav = df['Отправитель'].unique()
@@ -354,8 +360,9 @@ if uploaded_file is not None:
             didf = pd.DataFrame(dick)
             sorted_didf = didf.sort_values(by = 'Результат', ascending = False)
             sorted_didf['Отправитель'] = sorted_didf['Отправитель'] + ' N = ' + sorted_didf['Число проб'].apply(lambda x: str(x))
-            nx = sorted_didf['Отправитель']
-            ny = sorted_didf['Результат']
+            sdfotp = sorted_didf[sorted_didf['Число проб']>=otp]
+            nx = sdfotp['Отправитель']
+            ny = sdfotp['Результат']
             sns.barplot(y=nx, x=ny)
             ax.bar_label(ax.containers[0], fontsize=10)
             return fig
@@ -407,7 +414,7 @@ if uploaded_file is not None:
                 st.pyplot(figa)    
 
             if 'Отправитель' in df.columns:
-                figus = show_dispatcher(df)    
+                figus = show_dispatcher(df, otp)    
                 st.pyplot(figus) 
             else:
                 st.warning('⚠️❗ В загруженном файле нет колонки Отправитель. Статистика по отправителям не может быть отображена')       
