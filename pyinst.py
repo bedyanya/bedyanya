@@ -297,7 +297,7 @@ if uploaded_file is not None:
         sexbox = cb1.selectbox('Пол', options= ['Все', 'Мужской', 'Женский', 'Сравнить'])
       
         if 'Отправитель' in df.columns:
-            otp = cb2.number_input('Посчитать медианы по отправителям, если число проб >=' min_value = 1, value = 10)
+            otp = cb2.number_input('Посчитать медианы по отправителям, если число проб >=', min_value = 1, value = 10)
         else:
             pass
         
