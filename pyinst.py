@@ -359,11 +359,12 @@ if uploaded_file is not None:
             dick = {'Результат':yy, 'Отправитель':xx, 'Число проб': lens}
             didf = pd.DataFrame(dick)
             sorted_didf = didf.sort_values(by = 'Результат', ascending = False)
-            sorted_didf['Отправитель'] = sorted_didf['Отправитель'] + ' N = ' + sorted_didf['Число проб'].apply(lambda x: str(x))
+            sorted_didf['Отправитель'] = sorted_didf['Отправитель'] + ' (N = ' + sorted_didf['Число проб'].apply(lambda x: str(x) + ')')
             sdfotp = sorted_didf[sorted_didf['Число проб']>=otp]
             nx = sdfotp['Отправитель']
             ny = sdfotp['Результат']
             sns.barplot(y=nx, x=ny)
+            ax.set_title('Отправитель (N проб) - медианы')
             ax.bar_label(ax.containers[0], fontsize=10)
             return fig
 
