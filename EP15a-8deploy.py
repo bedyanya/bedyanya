@@ -561,7 +561,7 @@ def anova(T, an, anova_dict, grubbs_dict, mcvrs, mcvws, UVLrs, UVLwls, cvr_vn, c
     anova_dict['Дисперсия Vw (внутри серии)'].append(round(VW,3))
     anova_dict['Общее среднее'].append(round(GM,3))
     anova_dict['Повторяемость Sr / CVr %'].append(f'{round(SR,3)}  /  {round(CVR,2)}%')
-    anova_dict["Внутрилабораторная неприцизионность Swl / CVwl %"].append(f'{round(SWL,3)}  /  {round(CVWL,2)}%')
+    anova_dict["Внутрилабораторная непрецизионность Swl / CVwl %"].append(f'{round(SWL,3)}  /  {round(CVWL,2)}%')
 
 
     # Граббсер:
@@ -697,7 +697,7 @@ def anova(T, an, anova_dict, grubbs_dict, mcvrs, mcvws, UVLrs, UVLwls, cvr_vn, c
         anova_dict['Дисперсия Vw (внутри серии)'].append(round(VW,3))
         anova_dict['Общее среднее'].append(round(GM,3))
         anova_dict['Повторяемость Sr / CVr %'].append(f'{round(SR,3)}  /  {round(CVR,2)}%')
-        anova_dict["Внутрилабораторная неприцизионность Swl / CVwl %"].append(f'{round(SWL,3)}  /  {round(CVWL,2)}%')
+        anova_dict["Внутрилабораторная непрецизионность Swl / CVwl %"].append(f'{round(SWL,3)}  /  {round(CVWL,2)}%')
 
 
         # Граббсер:
