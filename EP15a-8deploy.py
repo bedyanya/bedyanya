@@ -161,9 +161,9 @@ anova_dict =  {"":[],
                "Дисперсия Vw (внутри серии)":[],
                "Общее среднее":[],
                'Повторяемость Sr / CVr %': [],
-               "Внутрилабораторная неприцизионность Swl / CVwl %": [] }
+               "Внутрилабораторная непрецизионность Swl / CVwl %": [] }
                #'Повторяемость CVr %': [],
-               #"Внутрилабораторная неприцизионность CVwl %": [] }
+               #"Внутрилабораторная непрецизионность CVwl %": [] }
 
 
 
@@ -549,16 +549,16 @@ def anova(T, an, anova_dict, grubbs_dict, mcvrs, mcvws, UVLrs, UVLwls, cvr_vn, c
     # Сбор ANOVA - таблицы
     anova_dict[''].append(f'Уровень {an+1}')
     anova_dict["Всего измерений N"].append(Ns)
-    anova_dict['Сумма квадратов SS между сериями(b)'].append(round(SS_b,2))
-    anova_dict['Сумма квадратов SS внутри серии (w)'].append(round(SS_w,2))
-    anova_dict['Сумма квадратов SS общая (total)'].append(round(SS_total,2))
+    anova_dict['Сумма квадратов SS между сериями(b)'].append(round(SS_b,3))
+    anova_dict['Сумма квадратов SS внутри серии (w)'].append(round(SS_w,3))
+    anova_dict['Сумма квадратов SS общая (total)'].append(round(SS_total,3))
     anova_dict["Степени свободы DF1 (между сериями)"].append(DF1)
     anova_dict["Степени свободы DF2 (внутри серии)"].append(DF2)
-    anova_dict["Средний квадрат MS1 (между сериями)"].append(round(MS_b,2))
-    anova_dict["Средний квадрат MS2 (внутри серии)"].append(round(MS_w,2))
+    anova_dict["Средний квадрат MS1 (между сериями)"].append(round(MS_b,3))
+    anova_dict["Средний квадрат MS2 (внутри серии)"].append(round(MS_w,3))
     anova_dict['Среднее количество повторов на серию n0'].append(round(n0,2))
-    anova_dict['Дисперсия Vb (между сериями)'].append(round(VB,2))
-    anova_dict['Дисперсия Vw (внутри серии)'].append(round(VW,2))
+    anova_dict['Дисперсия Vb (между сериями)'].append(round(VB,3))
+    anova_dict['Дисперсия Vw (внутри серии)'].append(round(VW,3))
     anova_dict['Общее среднее'].append(round(GM,3))
     anova_dict['Повторяемость Sr / CVr %'].append(f'{round(SR,3)}  /  {round(CVR,2)}%')
     anova_dict["Внутрилабораторная неприцизионность Swl / CVwl %"].append(f'{round(SWL,3)}  /  {round(CVWL,2)}%')
@@ -685,16 +685,16 @@ def anova(T, an, anova_dict, grubbs_dict, mcvrs, mcvws, UVLrs, UVLwls, cvr_vn, c
         # Сбор ANOVA - таблицы
         anova_dict[''].append(f'Уровень {an+1} (выбросы исключены)')
         anova_dict["Всего измерений N"].append(Ns)
-        anova_dict['Сумма квадратов SS между сериями(b)'].append(round(SS_b,2))
-        anova_dict['Сумма квадратов SS внутри серии (w)'].append(round(SS_w,2))
-        anova_dict['Сумма квадратов SS общая (total)'].append(round(SS_total,2))
+        anova_dict['Сумма квадратов SS между сериями(b)'].append(round(SS_b,3))
+        anova_dict['Сумма квадратов SS внутри серии (w)'].append(round(SS_w,3))
+        anova_dict['Сумма квадратов SS общая (total)'].append(round(SS_total,3))
         anova_dict["Степени свободы DF1 (между сериями)"].append(DF1)
         anova_dict["Степени свободы DF2 (внутри серии)"].append(DF2)
-        anova_dict["Средний квадрат MS1 (между сериями)"].append(round(MS_b,2))
-        anova_dict["Средний квадрат MS2 (внутри серии)"].append(round(MS_w,2))
+        anova_dict["Средний квадрат MS1 (между сериями)"].append(round(MS_b,3))
+        anova_dict["Средний квадрат MS2 (внутри серии)"].append(round(MS_w,3))
         anova_dict['Среднее количество повторов на серию n0'].append(round(n0,2))
-        anova_dict['Дисперсия Vb (между сериями)'].append(round(VB,2))
-        anova_dict['Дисперсия Vw (внутри серии)'].append(round(VW,2))
+        anova_dict['Дисперсия Vb (между сериями)'].append(round(VB,3))
+        anova_dict['Дисперсия Vw (внутри серии)'].append(round(VW,3))
         anova_dict['Общее среднее'].append(round(GM,3))
         anova_dict['Повторяемость Sr / CVr %'].append(f'{round(SR,3)}  /  {round(CVR,2)}%')
         anova_dict["Внутрилабораторная неприцизионность Swl / CVwl %"].append(f'{round(SWL,3)}  /  {round(CVWL,2)}%')
