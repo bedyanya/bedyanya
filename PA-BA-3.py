@@ -340,11 +340,14 @@ def plot_passing_bablok(x, y, res, title, from_zero=False):
     a_U = res["intercept_ci"][1]
     b_L = res["slope_ci"][0]
     a_L = res["intercept_ci"][0]
+
+    sign_L = "+" if a_L>=0 else minus
+    sign_U = "+" if a_U>=0 else minus
     
     yL = res["intercept_ci"][0] + res["slope_ci"][0] * xx 
     yU = res["intercept_ci"][1] + res["slope_ci"][1] * xx 
-    ax.plot(xx, yL, c="gray", alpha=0.5,label = f'Lower CI: {b_L:4.2f}x {sign} {abs(a_L):4.2f}') 
-    ax.plot(xx, yU, c="gray", alpha=0.5,label=f'Upper CI: {b_U:4.2f}x {sign} {abs(a_U):4.2f}') 
+    ax.plot(xx, yL, c="gray", alpha=0.5,label = f'Lower CI: {b_L:4.2f}x {sign_L} {abs(a_L):4.2f}') 
+    ax.plot(xx, yU, c="gray", alpha=0.5,label=f'Upper CI: {b_U:4.2f}x {sign_U} {abs(a_U):4.2f}') 
     ax.fill_between(xx, yL, yU, color="gray", alpha=0.2, label="95% CI") 
     ax.plot(xx, xx, c="black", ls="--", alpha=0.5, label="Reference line") 
     ax.set_title(title) 
@@ -479,11 +482,14 @@ def plot_deming(x, y, dres, dres_ci, title, from_zero=False):
     a_U = dres_ci["intercept_ci"][1]
     b_L = dres_ci["slope_ci"][0]
     a_L = dres_ci["intercept_ci"][0]
+
+    sign_L = "+" if a_L>=0 else minus
+    sign_U = "+" if a_U>=0 else minus
     
     yL = dres_ci["intercept_ci"][0] + dres_ci["slope_ci"][0] * xx 
     yU = dres_ci["intercept_ci"][1] + dres_ci["slope_ci"][1] * xx 
-    ax.plot(xx, yL, c="gray", alpha=0.5,label = f'Lower CI: {b_L:4.2f}x {sign} {abs(a_L):4.2f}') 
-    ax.plot(xx, yU, c="gray", alpha=0.5,label=f'Upper CI: {b_U:4.2f}x {sign} {abs(a_U):4.2f}') 
+    ax.plot(xx, yL, c="gray", alpha=0.5,label = f'Lower CI: {b_L:4.2f}x {sign_L} {abs(a_L):4.2f}') 
+    ax.plot(xx, yU, c="gray", alpha=0.5,label=f'Upper CI: {b_U:4.2f}x {sign_U} {abs(a_U):4.2f}') 
     ax.fill_between(xx, yL, yU, color="yellow", alpha=0.2, label="95% CI") 
     ax.plot(xx, xx, c="black", ls="--", alpha=0.5, label="Reference line") 
     ax.set_title(title) 
