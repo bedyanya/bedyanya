@@ -246,8 +246,8 @@ def plot_bland_altman(res, title, ba_check=False):
         model_diff = sm.OLS(resdf['diff'], X).fit()
         ba0, ba1 = model_diff.params
         resdf['diff_pred'] = model_diff.predict(X)
-        #resdf_sorted = resdf.sort_values(by='mean')
-        #ax.plot(resdf_sorted['mean'], resdf_sorted['diff_pred'], color='brown', label='Среднее смещение (регрессия)')
+        resdf_sorted = resdf.sort_values(by='mean')
+        ax.plot(resdf_sorted['mean'], resdf_sorted['diff_pred'], color='brown', label='Среднее смещение (регрессия)')
 
     #    resdf['resid'] = resdf['diff'] - model_diff.predict(X)
     #    resdf['abs_resid'] = np.abs(resdf['resid'])
