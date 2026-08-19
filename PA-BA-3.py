@@ -140,24 +140,32 @@ def bland_altman_prepare(x, y, mode="Absolute difference"):
     yy = y[srt]
     if mode == "Absolute difference": 
         diff = yy - xx 
-        ylabel = f'{b1} - {b2}'
-        xlabel = 'Mean of methods' 
+        #ylabel = f'{b1} - {b2}'
+        #xlabel = 'Mean of methods' 
+        ylabel = 'M1 - M2'
+        xlabel = 'Среднее методов' 
     elif mode == "Relative difference (%)": 
         diff = 100 * (yy - xx) / mean 
-        ylabel = f"({b1} - {b2}) / Mean of methods (%)" 
-        xlabel = 'Mean of methods'
+        #ylabel = f"({b1} - {b2}) / Mean of methods (%)" 
+        #xlabel = 'Mean of methods'
+        ylabel = "(M1 - M2)/Среднее методов (%)" 
+        xlabel = 'Среднее методов'
     elif mode == "Relative difference": 
         diff = (yy - xx) / mean 
-        ylabel = f"({b1} - {b2}) / Mean of methods"
-        xlabel = 'Mean of methods' 
+        #ylabel = f"({b1} - {b2}) / Mean of methods"
+        #xlabel = 'Mean of methods'
+        ylabel = "(M1 - M2)/Среднее методов" 
+        xlabel = 'Среднее методов'
     elif mode == 'Rank (X+Y)/2 vs (X-Y)':
         
        # xx = todf['x']
        # yy = todf['y']
      
         diff = yy - xx
-        ylabel = f'{b1} - {b2}'
-        xlabel = 'Rank of mean of methods'
+        #ylabel = f'{b1} - {b2}'
+        #xlabel = 'Rank of mean of methods'
+        ylabel = 'M1 - M2'
+        xlabel = 'Ранг среднего методов'
         mean = np.arange(1, len(x)+1, 1)
     elif mode == 'Rank (X+Y)/2 vs 100*(X-Y)/Mean':
         
@@ -167,8 +175,10 @@ def bland_altman_prepare(x, y, mode="Absolute difference"):
     #    mm = todf['mean']
 
         diff = 100 * (yy - xx) / mean 
-        ylabel = f"({b1} - {b2}) / Mean of methods (%)"
-        xlabel = 'Rank of mean of methods'
+        #ylabel = f"({b1} - {b2}) / Mean of methods (%)"
+        #xlabel = 'Rank of mean of methods'
+        ylabel = "(M1 - M2)/Среднее методов (%)"
+        xlabel = 'Ранг среднего методов'
         mean = np.arange(1, len(x)+1, 1)
     elif mode == r'$ln(\sqrt{XY})\quad vs\quad ln(Y/X)$':
         mean = np.log(mean)
