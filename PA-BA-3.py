@@ -148,13 +148,13 @@ def bland_altman_prepare(x, y, mode="Absolute difference"):
         diff = 100 * (yy - xx) / mean 
         #ylabel = f"({b1} - {b2}) / Mean of methods (%)" 
         #xlabel = 'Mean of methods'
-        ylabel = "(M1 - M2)/Среднее методов (%)" 
+        ylabel = "(M1 - M2) / Среднее методов (%)" 
         xlabel = 'Среднее методов'
     elif mode == "Relative difference": 
         diff = (yy - xx) / mean 
         #ylabel = f"({b1} - {b2}) / Mean of methods"
         #xlabel = 'Mean of methods'
-        ylabel = "(M1 - M2)/Среднее методов" 
+        ylabel = "(M1 - M2) / Среднее методов" 
         xlabel = 'Среднее методов'
     elif mode == 'Rank (X+Y)/2 vs (X-Y)':
         
@@ -177,7 +177,7 @@ def bland_altman_prepare(x, y, mode="Absolute difference"):
         diff = 100 * (yy - xx) / mean 
         #ylabel = f"({b1} - {b2}) / Mean of methods (%)"
         #xlabel = 'Rank of mean of methods'
-        ylabel = "(M1 - M2)/Среднее методов (%)"
+        ylabel = "(M1 - M2) / Среднее методов (%)"
         xlabel = 'Ранг среднего методов'
         mean = np.arange(1, len(x)+1, 1)
     elif mode == r'$ln(\sqrt{XY})\quad vs\quad ln(Y/X)$':
