@@ -216,7 +216,7 @@ def plot_ppa_npa(ppa_list, npa_list):
     ax.set_xlabel("NPA (%)")
     ax.set_ylabel("PPA (%)")
     ax.invert_xaxis()
-    ax.set_xlim(100, 0)
+    ax.set_xlim(105, 0)
     ax.set_ylim(0, 105)
     ax.set_title("Кривая согласия (PPA vs NPA)")
     ax.plot([0, 100], [100, 0], "--", color="gray", alpha=0.5)
