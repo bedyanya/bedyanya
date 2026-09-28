@@ -160,7 +160,8 @@ def plot_scatter_with_cutoff(dfs, aa, bb, p1, p2):
     ax.set_ylabel(f"Метод B ({bb})")
     ax.set_title("Диаграмма рассеяния (логарифмическая шкала)")
     ax.legend()
-    fig.tight_layout()
+    #fig.tight_layout()
+    ax.tick_params(axis='x', labelrotation = 45)
     return fig
 
 # МАТРИЦА 
