@@ -149,7 +149,7 @@ def plot_scatter_with_cutoff(dfs, aa, bb, p1, p2):
     m1_bin = x >= p1
     m2_bin = y >= p2
     concordant = m1_bin == m2_bin
-    fig, ax = plt.subplots(figsize=(12,6))
+    fig, ax = plt.subplots(figsize=(10,10))
     ax.scatter(x[concordant], y[concordant], alpha=0.6)
     ax.scatter(x[~concordant], y[~concordant], alpha=0.6)
     ax.axvline(p1, ls = '--', color= 'black', label = 'cut-off A', alpha = 0.6)
