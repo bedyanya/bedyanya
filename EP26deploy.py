@@ -893,9 +893,9 @@ with tab5:
         cpbzag1.markdown("**Уровень**")
         cpbzag2.markdown('**Концентрация**')
         cpbzag31.markdown('**CVr**')
-        zag32 = cpbzag32.checkbox('CVr', value=True, label_visibility='collapsed')
+        zag32 = cpbzag32.toggle('CVr', value=True, label_visibility='collapsed')
         cpbzag41.markdown('**CVwrl**')
-        zag42 = cpbzag42.checkbox('CVwrl', value=True, label_visibility='collapsed')
+        zag42 = cpbzag42.toggle('CVwrl', value=True, label_visibility='collapsed')
 
         stroki = []
         for i in range(0,prenum):
@@ -1118,8 +1118,8 @@ with tab5:
         try:
             input_col1.markdown('Вычислить для концентрации:')
             input_conc = input_col1.number_input('Вычислить для концентрации',min_value=0.000, step=0.0001, format="%f", label_visibility='collapsed')
-            RL = m_col1.checkbox('**Модель Rocke-Lorenzato**', value=True) 
-            SADLER = m_col2.checkbox('**Модель Sadler**', value=True)
+            RL = m_col1.toggle('**Модель Rocke-Lorenzato**', value=True) 
+            SADLER = m_col2.toggle('**Модель Sadler**', value=True)
             xs, y_cvrs, y_cvwrls, y_srs, y_swrls, xconc, rl_sdr,rl_sdw, rl_cvr, rl_cvw, ar, br, aw, bw, s_sdr, s_sdw, s_cvr, s_cvw, br1, br2, Jr, bw1, bw2, Jw = prepare_profile(stroki) 
             figu = plot_profile(xs, y_cvrs, y_cvwrls, y_srs, y_swrls, xconc, rl_sdr,rl_sdw, rl_cvr, rl_cvw, s_sdr, s_sdw, s_cvr, s_cvw)
             cpb02.pyplot(figu)
