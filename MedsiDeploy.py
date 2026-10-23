@@ -647,7 +647,7 @@ def new_logfunk_kde(X):
     ax.hist(A,density=True,bins = 80)
     ax.plot(UX,kde_f_y,color='orange', linewidth=2)
     ax.plot(UX,yopt_std,color='black',linewidth=2)
-    ax.plot(difx,dify_std, color='brown',linewidth=2)
+    #ax.plot(difx,dify_std, color='brown',linewidth=2)
     
     ax.plot(UX,razn,color='g')
     ax.axvline(fx_l, color = 'r', ls='--')
