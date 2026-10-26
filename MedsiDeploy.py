@@ -14,7 +14,7 @@ from matplotlib import pyplot as plt
 
 st.set_page_config(layout="wide")
 
-st.header('Непрямой метод расчёта референсных интервалов')
+st.header('Непрямой метод расчёта референсных интервалов. Геометрические РИ')
 uploaded_file = st.file_uploader("**📤 Загрузите файл Excel**",
                                          type=['xlsx','xls'],
                                          help='NO HELP',
