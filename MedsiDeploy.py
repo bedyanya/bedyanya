@@ -477,7 +477,7 @@ def new_logfunk_kde(X):
     #Блок вычисления "производной"
     def derivative1(A, dx=0.0001):
         k=1
-        RX=np.arange(np.min(A)/1.5, np.max(A),dx)
+        RX=np.arange(np.min(A), np.max(A),dx)
         #kde_dx=stats.lognorm.pdf(RX, scale = Muopt, s = SDopt)
         kde_dx=stats.lognorm.pdf(RX, scale = Muopt, s = SDopt)
         #kde_dx=(stats.norm(loc=Muopt_r,scale=SDopt_r)).pdf(RX)
